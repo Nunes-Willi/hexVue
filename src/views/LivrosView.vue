@@ -1,9 +1,3 @@
-<script>
-
-</script>
-
 <template>
-    <h1>Black Flames</h1>
+  <h1>Livros</h1>
 </template>
-
-<style></style>
