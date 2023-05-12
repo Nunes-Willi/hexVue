@@ -2,8 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import CategoriaView from "../views/CategoriaView.vue";
 import AutorView from "../views/AutorView.vue";
-import LivrosView from "../views/LivrosView.vue"
-import EditorasView from "../views/EditorasView.vue"
+import LivrosView from "../views/LivrosView.vue";
+import EditorasView from "../views/EditorasView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
