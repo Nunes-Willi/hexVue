@@ -42,9 +42,7 @@ export default {
   <hr />
   <ul>
     <li v-for="categoria in categorias" :key="categoria.id">
-      <span @click="editar(categoria)">
-        ({{ categoria.id }}) - {{ categoria.descricao }} -
-      </span>
+      <span @click="editar(categoria)"> {{ categoria.descricao }} - </span>
       <button @click="excluir(categoria)">X</button>
     </li>
   </ul>

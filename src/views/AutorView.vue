@@ -42,9 +42,7 @@ export default {
   <hr />
   <ul>
     <li v-for="autor in autores" :key="autor.id">
-      <span @click="editar(autor)">
-        ({{ autor.id }}) - {{ autor.nome_autor }} -
-      </span>
+      <span @click="editar(autor)"> {{ autor.nome_autor }} - </span>
       <button @click="excluir(autor)">X</button>
     </li>
   </ul>

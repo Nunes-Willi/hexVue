@@ -2,7 +2,7 @@
 import EditorasApi from "@/api/editoras";
 const editorasApi = new EditorasApi();
 
-export default{
+export default {
   data() {
     return {
       editoras: [],
@@ -43,9 +43,7 @@ export default{
   <hr />
   <ul>
     <li v-for="editora in editoras" :key="editora.id">
-      <span @click="editar(editora)">
-        ({{ editora.id }}) - {{ editora.nome }} -
-      </span>
+      <span @click="editar(editora)"> {{ editora.nome }} - </span>
       <button @click="excluir(editora)">X</button>
     </li>
   </ul>
