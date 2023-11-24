@@ -2,13 +2,10 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import LogAvView from "../views/LogAvView.vue";
 import EventosView from "../views/EventosView.vue";
-<<<<<<< Updated upstream
 import NotasView from "../views/NotasView.vue";
-=======
-import EditorasView from "../views/EditorasView.vue";
-import InscricaoPView from "../views/InscricaoPView.vue"
->>>>>>> Stashed changes
+import InscricaoPView from "../views/InscricaoPView.vue";
 import LogPcView from "../views/LogPcView.vue";
+import EventosAvView from "../views/EventosAvView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -42,6 +39,11 @@ const router = createRouter({
       path: "/inscricaop",
       name: "inscricaop",
       component: InscricaoPView,
+    },
+    {
+      path: "/eventosav",
+      name: "enventosav",
+      component: EventosAvView,
     },
   ],
 });
