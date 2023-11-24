@@ -1,7 +1,6 @@
 <template>
   <div class="login-container">
-    <img src="@/imagens/Logo.png" alt="" class="img-logo">
-    <h1 style="color: white;">Cadastro do Avaliador</h1>
+    <img src="@/imagens/Logo.png" alt="" class="img-logo" />
     <div class="login-form">
       <div class="form-section">
         <h2>Dados do Avaliador</h2>
@@ -17,8 +16,6 @@
 
           <label for="senha">Senha:</label>
           <input type="password" v-model="avaliador.senha" required />
-
-          <button type="submit">Entrar</button>
         </form>
       </div>
 
@@ -34,7 +31,7 @@
           <label for="emailEmpresa">Email da Empresa:</label>
           <input type="email" v-model="empresa.email" required />
 
-          <button type="submit">Entrar</button>
+          <button @click="submit">Entrar</button>
         </form>
       </div>
     </div>
@@ -46,26 +43,47 @@ export default {
   data() {
     return {
       avaliador: {
-        nome: '',
-        idade: '',
-        email: '',
-        senha: ''
+        nome: "",
+        idade: "",
+        email: "",
+        senha: "",
       },
       empresa: {
-        nome: '',
-        cnpj: '',
-        email: ''
-      }
+        nome: "",
+        cnpj: "",
+        email: "",
+      },
     };
   },
   methods: {
     submitAvaliador() {
-      console.log('Dados do Avaliador:', this.avaliador);
+      console.log("Dados do Avaliador:", this.avaliador);
     },
     submitEmpresa() {
-      console.log('Dados da Empresa:', this.empresa);
-    }
-  }
+      console.log("Dados da Empresa:", this.empresa);
+    },
+    submit() {
+      if (this.isAvaliadorValido && this.isEmpresaValida) {
+        console.log("Ambos os formulários estão preenchidos.");
+        // Faça algo com os dados, se necessário.
+      } else {
+        console.log("Preencha ambos os formulários.");
+      }
+    },
+  },
+  computed: {
+    isAvaliadorValido() {
+      return (
+        this.avaliador.nome &&
+        this.avaliador.idade &&
+        this.avaliador.email &&
+        this.avaliador.senha
+      );
+    },
+    isEmpresaValida() {
+      return this.empresa.nome && this.empresa.cnpj && this.empresa.email;
+    },
+  },
 };
 </script>
 
