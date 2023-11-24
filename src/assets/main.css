@@ -1,10 +1,9 @@
 @import "./base.css";
 
 #app {
-  max-width: 1280px;
+  max-width: 1980px;
   margin: 0 auto;
-  padding: 2rem;
-
+  height: 100vh;
   font-weight: normal;
 }
 
@@ -15,3 +14,38 @@ a,
   transition: 0.4s;
 }
 
+header {
+  background-color: #333;
+  text-align: center;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px; /* Adiciona margem inferior ao cabeçalho */
+}
+
+header h1 {
+  margin: 0;
+  font-size: 36px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+header ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+header li {
+  display: inline;
+  margin-right: 20px;
+}
+
+header a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+main {
+  height: 70%;
+}
