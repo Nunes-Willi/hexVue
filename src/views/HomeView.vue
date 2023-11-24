@@ -1,5 +1,6 @@
 <template>
   <div>
+    <button class="evaluator-button">Página para o Avaliador</button>
     <div class="logo-container">
       <img src="@/imagens/Logo.png" alt="Logo" class="logo" />
     </div>
@@ -81,6 +82,20 @@
 
 <style scoped>
 /* ... (estilos existentes) ... */
+
+/* Botão para o avaliador */
+.evaluator-button {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: white;
+  color: #333;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000; /* Garante que o botão esteja acima de outros elementos */
+}
 
 /* Adicione a seguinte regra para centralizar as imagens */
 .image-group {
