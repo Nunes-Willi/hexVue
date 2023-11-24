@@ -10,7 +10,7 @@
         <div class="header-content">
           <h1>Bem-vindo ao HEX</h1>
           <p class="header-subtitle">Melhor site de Hackathons do Brasil</p>
-          <router-link to="/evento">Participar de um Hackathon</router-link>
+          <router-link to="/participantes">Participar de um Hackathon</router-link>
         </div>
       </div>
     </header>
