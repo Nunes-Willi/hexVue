@@ -16,7 +16,7 @@
 
     <div class="main-container">
       <div class="flexible-content">
-        <h2>O que é o Hackathon?</h2>
+        <h2 class="section-title">O que é o Hackathon?</h2>
         <div class="content-item">
           <div class="content-text">
             <div class="content-wrapper">
@@ -63,11 +63,30 @@
         class="nova-imagem"
       />
     </div>
+
+    <!-- Novo título com borda branca -->
+    <div class="bordered-section">
+      <h2 class="section-title">Imagens de outras edições</h2>
+      <!-- Grupo de imagens centralizadas -->
+      <div class="image-group">
+        <img src="@/imagens/imagem1.jpg" alt="Imagem 1" class="group-image" />
+        <img src="@/imagens/imagem2.jpg" alt="Imagem 2" class="group-image" />
+        <img src="@/imagens/imagem3.jpg" alt="Imagem 3" class="group-image" />
+        <img src="@/imagens/imagem4.jpg" alt="Imagem 4" class="group-image" />
+        <img src="@/imagens/imagem5.jpg" alt="Imagem 5" class="group-image" />
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
 /* ... (estilos existentes) ... */
+
+/* Adicione a seguinte regra para centralizar as imagens */
+.image-group {
+  display: flex;
+  justify-content: center;
+}
 
 .logo-container {
   position: absolute;
@@ -138,7 +157,8 @@
   flex-direction: column;
   align-items: center;
   margin: 20px;
-  background-color: #1B4341; /* Cor de fundo alterada */
+  background-color: #1B4341; /* Cor de fundo diferente */
+  padding: 20px;
 }
 
 .content-item {
@@ -169,7 +189,7 @@
 }
 
 .section-background {
-  background-color: #1B4341; /* Cor de fundo diferente */
+  background-color: #333; /* Cor de fundo diferente */
   padding: 20px; /* Adiciona preenchimento interno */
   border-radius: 5px; /* Adiciona uma borda arredondada */
   margin-top: 20px; /* Adiciona margem superior */
@@ -179,6 +199,7 @@
 .section-background h2,
 .section-background p {
   margin: 0 auto; /* Centraliza os textos horizontalmente */
+  color: white; /* Cor do texto */
 }
 
 .nova-imagem {
@@ -188,7 +209,21 @@
   margin-top: 10px; /* Adiciona margem acima da imagem */
 }
 
-.flexible-content {
-  color: white;
+.bordered-section {
+  margin-top: 20px;
+  padding: 20px;
+  border: 2px solid white; /* Borda branca */
+}
+
+.section-title {
+  color: white; /* Cor do título */
+  text-align: center;
+}
+
+.group-image {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  object-fit: cover;
 }
 </style>
