@@ -1,5 +1,11 @@
 @import "./base.css";
 
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--vt-c-white);
+}
+
 #app {
   max-width: 1980px;
   margin: 0 auto;
