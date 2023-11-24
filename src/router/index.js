@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import LogAvView from "../views/LogAvView.vue";
 import EventosView from "../views/EventosView.vue";
 import EditorasView from "../views/EditorasView.vue";
+import LogPcView from "../views/LogPcView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,7 +28,11 @@ const router = createRouter({
       name: "editoras",
       component: EditorasView,
     },
-
+    {
+      path: "/participantes",
+      name: "participantes",
+      component: LogPcView,
+    },
   ],
 });
 
