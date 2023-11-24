@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="evaluator-button">Página para o Avaliador</button>
+    <router-link to="/avaliadores" class="evaluator-button">Página para o Avaliador</router-link>
     <div class="logo-container">
       <img src="@/imagens/Logo.png" alt="Logo" class="logo" />
     </div>
@@ -22,22 +22,23 @@
           <div class="content-text">
             <div class="content-wrapper">
               <p>
-                Imagine que você precise resolver um problema da sua empresa, da sua
-                escola, do seu bairro ou de qualquer grupo no qual você pertença, e
-                isso precise ser feito através do uso de alguma tecnologia. E mais,
-                você precisa de uma solução o mais rápido possível… Pode ser que você
-                precise de um Hackathon! Bom, caso você não
-                saiba, Hackathon significa maratona de programação. O termo resulta de
-                uma combinação das palavras inglesas “hack” (programar de forma
-                excepcional) e “marathon” (maratona). Sendo assim, o Hackathon é um
-                evento que reúne programadores, designers e outros profissionais
-                ligados ao desenvolvimento de software para uma maratona de
-                programação, cujo objetivo é desenvolver um software ou solução
-                tecnológica que atenda a um fim específico. A maratona pode durar
-                entre um dia ou uma semana. E ao final, você terá soluções
-                surpreendentes… Nesses eventos, os participantes têm a oportunidade de
-                conhecer outros profissionais da área, fazer Networking, participar de
-                um projeto colaborativo em um ambiente específico de programação e
+                Imagine que você precise resolver um problema da sua empresa, da
+                sua escola, do seu bairro ou de qualquer grupo no qual você
+                pertença, e isso precise ser feito através do uso de alguma
+                tecnologia. E mais, você precisa de uma solução o mais rápido
+                possível… Pode ser que você precise de um Hackathon! Bom, caso
+                você não saiba, Hackathon significa maratona de programação. O
+                termo resulta de uma combinação das palavras inglesas “hack”
+                (programar de forma excepcional) e “marathon” (maratona). Sendo
+                assim, o Hackathon é um evento que reúne programadores,
+                designers e outros profissionais ligados ao desenvolvimento de
+                software para uma maratona de programação, cujo objetivo é
+                desenvolver um software ou solução tecnológica que atenda a um
+                fim específico. A maratona pode durar entre um dia ou uma
+                semana. E ao final, você terá soluções surpreendentes… Nesses
+                eventos, os participantes têm a oportunidade de conhecer outros
+                profissionais da área, fazer Networking, participar de um
+                projeto colaborativo em um ambiente específico de programação e
                 ainda concorrer a prêmios. O que faz um evento como esse ser um
                 sucesso é o desafio. Lembrando que não pode faltar a diversão!
               </p>
@@ -54,15 +55,16 @@
 
     <!-- Novo título e texto com cor de fundo diferente -->
     <div class="section-background">
-      <h2 style="color: white;">Quem pode participar</h2>
-      <p style="color: white;">
-        Nos hackathons tanto podem participar equipes da empresa promotora do evento, quanto equipe de fora da empresa. Esta equipes podem ser formadas por alunos do ensino médio, quanto de faculdade ou até profissionais liberais. A grande ganho, conhecimento e soluções para os problemas vêem justamente da união destas pessoas como visões de mundos diferentes.
+      <h2 style="color: white">Quem pode participar</h2>
+      <p style="color: white">
+        Nos hackathons tanto podem participar equipes da empresa promotora do
+        evento, quanto equipe de fora da empresa. Esta equipes podem ser
+        formadas por alunos do ensino médio, quanto de faculdade ou até
+        profissionais liberais. A grande ganho, conhecimento e soluções para os
+        problemas vêem justamente da união destas pessoas como visões de mundos
+        diferentes.
       </p>
-      <img
-        src="@/imagens/Hreuniao.png"
-        alt="Nova Imagem"
-        class="nova-imagem"
-      />
+      <img src="@/imagens/Hreuniao.png" alt="Nova Imagem" class="nova-imagem" />
     </div>
 
     <!-- Novo título com borda branca -->
@@ -172,7 +174,7 @@
   flex-direction: column;
   align-items: center;
   margin: 20px;
-  background-color: #1B4341; /* Cor de fundo diferente */
+  background-color: #1b4341; /* Cor de fundo diferente */
   padding: 20px;
 }
 
