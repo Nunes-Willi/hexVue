@@ -10,7 +10,7 @@
         <div class="header-content">
           <h1>Bem-vindo ao HEX</h1>
           <p class="header-subtitle">Melhor site de Hackathons do Brasil</p>
-          <button class="cta-button">Participar de um Hackathon</button>
+          <router-link to="/evento">Participar de um Hackathon</router-link>
         </div>
       </div>
     </header>
@@ -96,7 +96,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  z-index: 1000; /* Garante que o botão esteja acima de outros elementos */
+  z-index: 999;
 }
 
 /* Adicione a seguinte regra para centralizar as imagens */

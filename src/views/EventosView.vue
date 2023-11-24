@@ -6,7 +6,7 @@
   
       <!-- Reader vazio com imagem de fundo -->
       <div class="empty-reader">
-        <img src="@/imagens/background-image.jpg" alt="Background Image" class="background-image" />
+        <img src="@/imagens/evento.png" alt="Background Image" class="background-image" />
       </div>
   
       <!-- Main com cards sobre a imagem de fundo -->
