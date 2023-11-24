@@ -1,3 +1,125 @@
 <template>
-  <h1>Olá</h1>
+  <div class="login-container">
+    <img src="@/imagens/Logo.png" alt="" class="img-logo">
+    <h1 style="color: white;">Cadastro do Avaliador</h1>
+    <div class="login-form">
+      <div class="form-section">
+        <h2>Dados do Avaliador</h2>
+        <form @submit.prevent="submitAvaliador">
+          <label for="nome">Nome:</label>
+          <input type="text" v-model="avaliador.nome" required />
+
+          <label for="idade">Idade:</label>
+          <input type="text" v-model="avaliador.idade" required />
+
+          <label for="email">Email:</label>
+          <input type="email" v-model="avaliador.email" required />
+
+          <label for="senha">Senha:</label>
+          <input type="password" v-model="avaliador.senha" required />
+
+          <button type="submit">Entrar</button>
+        </form>
+      </div>
+
+      <div class="form-section">
+        <h2>Dados da Empresa</h2>
+        <form @submit.prevent="submitEmpresa">
+          <label for="nomeEmpresa">Nome da Empresa:</label>
+          <input type="text" v-model="empresa.nome" required />
+
+          <label for="cnpj">CNPJ:</label>
+          <input type="text" v-model="empresa.cnpj" required />
+
+          <label for="emailEmpresa">Email da Empresa:</label>
+          <input type="email" v-model="empresa.email" required />
+
+          <button type="submit">Entrar</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      avaliador: {
+        nome: '',
+        idade: '',
+        email: '',
+        senha: ''
+      },
+      empresa: {
+        nome: '',
+        cnpj: '',
+        email: ''
+      }
+    };
+  },
+  methods: {
+    submitAvaliador() {
+      console.log('Dados do Avaliador:', this.avaliador);
+    },
+    submitEmpresa() {
+      console.log('Dados da Empresa:', this.empresa);
+    }
+  }
+};
+</script>
+
+<style scoped>
+.login-container {
+  background-color: #224948;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-logo {
+  height: 150px;
+  width: 350px;
+  margin-bottom: 20px; /* Espaço entre a imagem e os cards */
+}
+
+.login-form {
+  display: flex;
+}
+
+.form-section {
+  margin: 20px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #224948;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #224948;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+</style>

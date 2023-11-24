@@ -90,13 +90,14 @@
   position: fixed;
   top: 10px;
   right: 10px;
-  background: white;
-  color: #333;
+  background: transparent;
+  color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   z-index: 999;
+  
 }
 
 /* Adicione a seguinte regra para centralizar as imagens */
