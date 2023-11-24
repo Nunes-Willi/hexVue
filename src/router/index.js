@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import LogAvView from "../views/LogAvView.vue";
 import EventosView from "../views/EventosView.vue";
-import EditorasView from "../views/EditorasView.vue";
+import NotasView from "../views/NotasView.vue";
 import LogPcView from "../views/LogPcView.vue";
 
 const router = createRouter({
@@ -24,9 +24,9 @@ const router = createRouter({
       component: LogAvView,
     },
     {
-      path: "/editoras",
-      name: "editoras",
-      component: EditorasView,
+      path: "/notas",
+      name: "notas",
+      component: NotasView,
     },
     {
       path: "/participantes",
