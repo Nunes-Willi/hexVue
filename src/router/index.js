@@ -2,7 +2,12 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import LogAvView from "../views/LogAvView.vue";
 import EventosView from "../views/EventosView.vue";
+<<<<<<< Updated upstream
 import NotasView from "../views/NotasView.vue";
+=======
+import EditorasView from "../views/EditorasView.vue";
+import InscricaoPView from "../views/InscricaoPView.vue"
+>>>>>>> Stashed changes
 import LogPcView from "../views/LogPcView.vue";
 
 const router = createRouter({
@@ -32,6 +37,11 @@ const router = createRouter({
       path: "/participantes",
       name: "participantes",
       component: LogPcView,
+    },
+    {
+      path: "/inscricaop",
+      name: "inscricaop",
+      component: InscricaoPView,
     },
   ],
 });
