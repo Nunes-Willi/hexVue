@@ -1,11 +1,10 @@
 <template>
-  <div class="tudo">
-    
-    <!-- Imagem de fundo do header com filtro preto escuro e título "Hackathon" -->
-    <div class="header-image-container">
+  <div>
     <!-- Título sobreposto à imagem de fundo do header -->
     <h1 class="events-title-overlay">Hackathon IFC-Araquari 2023</h1>
 
+    <!-- Imagem de fundo do header com filtro preto escuro e título "Hackathon" -->
+    <div class="header-image-container">
       <div class="background-image-overlay"></div>
       <img
         src="@/imagens/eifc.png"
@@ -15,6 +14,7 @@
       <p class="corner-text data-text">Data</p>
       <p class="corner-text time-text">Horário</p>
       <p class="corner-text location-text">Local</p>
+      <h2 class="hackathon-title">Hackathon</h2>
     </div>
 
     <!-- Div com fundo branco envolvendo a main -->
@@ -30,34 +30,50 @@
           <label for="teamName">Nome do Time:</label>
           <input type="text" id="teamName" name="teamName" />
 
-          <!-- Campo Nome do Participante -->
-          <label for="participantName">Nome:</label>
-          <input type="text" id="participantName" name="participantName" />
+          <!-- Cards para informações do participante -->
+          <div v-for="participant in participants" :key="participant.id" class="participant-card">
+            <h3>Participante {{ participant.id }}</h3>
+            <div class="form-row">
+              <label for="participantName">Nome:</label>
+              <input type="text" :id="'participantName_' + participant.id" :name="'participantName_' + participant.id" />
+            </div>
+            <div class="form-row">
+              <label for="participantAge">Idade:</label>
+              <input type="text" :id="'participantAge_' + participant.id" :name="'participantAge_' + participant.id" />
+            </div>
+            <div class="form-row">
+              <label for="participantEmail">E-mail:</label>
+              <input type="text" :id="'participantEmail_' + participant.id" :name="'participantEmail_' + participant.id" />
+            </div>
+          </div>
 
-          <!-- Campo Idade do Participante -->
-          <label for="participantAge">Idade:</label>
-          <input type="text" id="participantAge" name="participantAge" />
 
-          <!-- Campo E-mail do Participante -->
-          <label for="participantEmail">E-mail:</label>
-          <input type="text" id="participantEmail" name="participantEmail" />
 
           <!-- Botão Adicionar Participante -->
-          <button class="add-participant-button">Adicionar Participante</button>
+          <button @click="addParticipant" class="add-participant-button">Adicionar Participante</button>
         </form>
       </main>
     </div>
   </div>
 </template>
 
-<style scoped>
+<script>
+export default {
+  data() {
+    return {
+      participants: [{ id: 1 }, { id: 2 },{id: 3}, {id: 4}]
+    };
+  },
+  methods: {
+    addParticipant() {
+      const nextId = this.participants.length + 1;
+      this.participants.push({ id: nextId });
+    }
+  }
+};
+</script>
 
-.tudo{
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
+<style scoped>
 
 .events-title-overlay {
   font-size: 24px;
@@ -118,22 +134,17 @@
 
 .main-wrapper {
   background-color: white;
+  margin: 20px; /* Adicione margens para espaçamento */
+  padding: 20px; /* Adicione preenchimento para espaçamento interno */
   border-radius: 8px;
-  display: flex;
-  height: 500px;
-  width: 500px;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 15px;
 }
 
 .main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 800px; /* Defina a largura máxima da main */
- 
+  max-width: 700px; /* Defina a largura máxima da main */
+  margin: auto; /* Centralize a main na página */
 }
 
 .team-form {
@@ -146,6 +157,36 @@
   margin-top: 10px;
 }
 
+.participant-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 20px;
+  justify-content: center;
+  
+}
+
+.participant-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  padding-left: 0px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+.form-row label {
+  margin-right: 10px;
+  justify-content: center;
+}
+
 .add-participant-button {
   margin-top: 10px;
   padding: 8px;
@@ -154,6 +195,7 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  
 }
 
 </style>
