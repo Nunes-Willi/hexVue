@@ -6,6 +6,7 @@ import NotasView from "../views/NotasView.vue";
 import InscricaoPView from "../views/InscricaoPView.vue";
 import LogPcView from "../views/LogPcView.vue";
 import EventosAvView from "../views/EventosAvView.vue";
+import MyInscriptionsView from "../views/MyInscriptionsView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,6 +45,11 @@ const router = createRouter({
       path: "/eventosav",
       name: "enventosav",
       component: EventosAvView,
+    },
+    {
+      path: "/myinscriptions",
+      name: "myinscriptions",
+      component: MyInscriptionsView,
     },
   ],
 });
