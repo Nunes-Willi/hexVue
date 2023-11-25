@@ -45,10 +45,11 @@
             <button @click="buscarParticipantes" class="add-participant-button">
               Buscar Participantes
             </button>
-
-            <button type="submit" class="add-participant-button">
-              Formar Equipe
-            </button>
+            <a href="/Cinscrição">
+              <button type="submit" class="add-participant-button">
+                Formar Equipe
+              </button>
+            </a>
           </form>
         </main>
       </div>
@@ -104,15 +105,12 @@ export default {
           }
         );
 
-        // Limpar o formulário após enviar a equipe
         this.teamName = "";
         this.participants.forEach((p) => (p.selected = false));
 
-        // Handle the response as needed
         console.log("Server response:", response.data);
 
-        // Redirecionar para a próxima tela
-        this.$router.push("/equipesreg/");
+        this.$router.push("/Cinscricao/");
       } catch (error) {
         alert("Erro ao formar equipe. Por favor, tente novamente.");
         console.error("Error:", error);
@@ -126,19 +124,23 @@ export default {
 p {
   margin-bottom: -10px;
 }
+
 input:cheked {
   background-color: #224849;
 }
+
 .check {
   height: 20px;
   width: 20px;
   margin: 10px;
 }
+
 .inf {
   display: flex;
   flex-direction: column;
   margin-left: 10px;
 }
+
 .part {
   display: flex;
   flex-direction: row;
@@ -151,11 +153,13 @@ h2 {
   color: #224849;
   font-size: 25px;
 }
+
 .base {
   justify-content: center;
   align-items: center;
   display: flex;
 }
+
 input {
   border-top: none;
   border-left: none;
@@ -163,6 +167,7 @@ input {
   border-bottom: #224849 solid 2px;
   width: 400px;
 }
+
 .events-title-overlay {
   font-size: 24px;
   font-weight: bold;
@@ -190,7 +195,8 @@ input {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.95); /* Cor do filtro preto mais escuro */
+  background: rgba(0, 0, 0, 0.95);
+  /* Cor do filtro preto mais escuro */
 }
 
 .corner-text {
@@ -222,8 +228,8 @@ input {
 
 .main-wrapper {
   background-color: white;
-  margin: 20px; /* Adicione margens para espaçamento */
-  padding: 20px; /* Adicione preenchimento para espaçamento interno */
+  margin: 20px;
+  padding: 20px;
 
   width: 70%;
   display: flex;
@@ -235,14 +241,14 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 700px; /* Defina a largura máxima da main */
-  margin: auto; /* Centralize a main na página */
+  max-width: 700px;
+  margin: auto;
 }
 
 .team-form {
   display: flex;
   flex-direction: column;
-  margin-top: 20px; /* Adicione margem acima do formulário */
+  margin-top: 20px;
 }
 
 .team-form label {

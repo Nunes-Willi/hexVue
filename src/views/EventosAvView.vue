@@ -23,11 +23,12 @@ export default {
         <p class="participant-center">Central do Avaliador</p>
       </div>
       <div class="header-buttons">
-        <router-link to="/inscricaoav" class="header-button"> Minhas Inscrições </router-link>
+        <router-link to="/inscricaoav" class="header-button">
+          Minhas Inscrições
+        </router-link>
         <button class="header-button">Conta</button>
       </div>
     </div>
-    <!-- Reader vazio com imagem de fundo e barra de busca -->
     <div class="search-container">
       <div class="title_pri">
         <h1 class="events-title">EVENTOS</h1>
@@ -37,38 +38,40 @@ export default {
       </div>
     </div>
 
-    <!-- Main com cards abaixo da imagem de fundo -->
     <main class="main-container">
-      <!-- Primeiro card -->
       <div class="card card1">
         <div class="card-content">
           <h2 class="event-title">Hackathon IFC - Araquari</h2>
           <p>Data: 24 de Nov</p>
           <p>Horário: 7:30</p>
           <p>Local: IFC Campus Araquari</p>
-          <button @click="confirmCandidatarSe" class="subscribe-button">Candidatar-se</button>
+          <button @click="confirmCandidatarSe" class="subscribe-button">
+            Candidatar-se
+          </button>
         </div>
       </div>
 
-      <!-- Segundo card -->
       <div class="card card2">
         <div class="card-content">
           <h2 class="event-title">Hackathon IFC - Araquari</h2>
           <p>Data</p>
           <p>Horário: 7:30</p>
           <p>Local: IFC Campus Araquari</p>
-          <button @click="confirmCandidatarSe" class="subscribe-button">Candidatar-se</button>
+          <button @click="confirmCandidatarSe" class="subscribe-button">
+            Candidatar-se
+          </button>
         </div>
       </div>
 
-      <!-- Terceiro card -->
       <div class="card card3">
         <div class="card-content">
           <h2 class="event-title">Card 3</h2>
           <p>Descrição do card 3.</p>
           <p>Horário: 7:30</p>
           <p>Local: IFC Campus Araquari</p>
-          <button @click="confirmCandidatarSe" class="subscribe-button">Candidatar-se</button>
+          <button @click="confirmCandidatarSe" class="subscribe-button">
+            Candidatar-se
+          </button>
         </div>
       </div>
     </main>
@@ -76,7 +79,7 @@ export default {
 </template>
 
 <style scoped>
-.logo{
+.logo {
   height: 80px;
   width: 252px;
 }
@@ -94,7 +97,7 @@ export default {
   align-items: center;
   padding: 10px 20px;
   background-color: #224948;
-  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25); 
+  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
 }
 
 .logo-container {
@@ -135,10 +138,8 @@ export default {
   right: 10px;
   padding: 8px 16px;
   background-color: transparent;
-  /* Botão transparente */
   color: white;
   border: 1px solid white;
-  /* Adicionei uma borda para visibilidade */
   border-radius: 4px;
   cursor: pointer;
 }
@@ -155,7 +156,6 @@ export default {
 
 .search-input {
   z-index: 2;
-  /* Garante que a barra de busca fique acima da imagem de fundo */
   padding: 8px;
   border: none;
   border-radius: 15px;
@@ -176,14 +176,11 @@ export default {
 .main-container {
   display: flex;
   flex-direction: column;
-  /* Cards abaixo um do outro */
   align-items: center;
-  /* Centraliza os cards */
   padding: 20px;
   background-color: #224849;
   position: relative;
   z-index: 1;
-  /* Garante que os cards fiquem acima da imagem de fundo */
 }
 
 .card {
@@ -193,7 +190,6 @@ export default {
   border: 1px solid #333;
   border-radius: 8px;
   color: white;
-  /* Cor do texto nos cards */
   background-size: cover;
   background-position: center;
   position: relative;
@@ -207,24 +203,19 @@ export default {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  /* Cor do filtro preto */
   border-radius: 8px;
-  /* Garante que o filtro preto tenha as mesmas bordas arredondadas que o card */
 }
 
 .card1 {
   background-image: url("@/imagens/ifc2.png");
-  /* Substitua pelo caminho da sua imagem */
 }
 
 .card2 {
   background-image: url("@/imagens/ifc2.png");
-  /* Substitua pelo caminho da sua imagem */
 }
 
 .card3 {
   background-image: url("@/imagens/ifc2.png");
-  /* Substitua pelo caminho da sua imagem */
 }
 
 .card h2 {

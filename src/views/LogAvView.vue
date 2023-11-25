@@ -27,7 +27,6 @@
             </form>
           </div>
         </div>
-        <!-- Move the button outside of the form-section -->
         <router-link to="/eventosav" class="botao" @click="submitAvaliador"
           >Cadastrar</router-link
         >
@@ -49,16 +48,10 @@ export default {
         empresa: "",
         senha: "",
       },
-      // empresa: {
-      //   nome: "",
-      //   cnpj: "",
-      //   email: "",
-      // },
     };
   },
   methods: {
     async submitAvaliador() {
-      // Check if all fields are filled
       if (
         !this.nome ||
         !this.idade ||
@@ -71,7 +64,6 @@ export default {
         return;
       }
 
-      // Make a POST request to your API to 00 the user
       try {
         await axios.post("/avaliadores/", {
           nome: this.nome,
@@ -81,8 +73,6 @@ export default {
           empresa: this.empresa,
           senha: this.senha,
         });
-        // if (response.ok) {
-        // Registration successful, navigate to the next screen
         this.$router.push("/eventoav");
       } catch (error) {
         alert("Erro no cadastro. Por favor, tente novamente.");

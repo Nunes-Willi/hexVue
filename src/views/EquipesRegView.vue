@@ -53,7 +53,7 @@ li {
 }
 
 .logo {
-  width: 350px; /* Adjust the width as needed */
+  width: 350px;
   height: auto;
 }
 

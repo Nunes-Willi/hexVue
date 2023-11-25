@@ -67,7 +67,6 @@
         </div>
       </div>
 
-      <!-- Novo título e texto com cor de fundo diferente -->
       <div class="section-background">
         <h2 style="color: white">Quem pode participar</h2>
         <p style="color: white">
@@ -85,10 +84,8 @@
         />
       </div>
 
-      <!-- Novo título com borda branca -->
       <div class="bordered-section">
         <h2 class="section-title">Imagens de outras edições</h2>
-        <!-- Grupo de imagens centralizadas -->
         <div class="image-group">
           <img src="@/imagens/Group28.png" alt="Imagem 1" class="group-image" />
         </div>

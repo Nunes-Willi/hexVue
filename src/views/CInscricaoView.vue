@@ -10,9 +10,6 @@
       <h2 class="hackathon-title">Hackathon IFC - Campus Araquari</h2>
     </div>
 
-    <!-- Div com fundo branco envolvendo os formulários -->
-
-    <!-- Formulário de informações -->
     <form class="info-form">
       <h2>Informações</h2>
       <p>Data: {{ eventDate }}</p>
@@ -26,7 +23,6 @@
       </button>
     </form>
 
-    <!-- Lista de participantes -->
     <div v-if="participants.length > 0" class="participants-list">
       <h2>Participantes</h2>
       <div
@@ -45,7 +41,6 @@
       </div>
     </div>
 
-    <!-- Modal de confirmação de cancelamento -->
     <div v-if="showCancelModal" class="cancel-modal">
       <p>Deseja realmente cancelar sua inscrição?</p>
       <button @click="cancelRegistration" class="modal-button">Sim</button>
@@ -62,10 +57,10 @@ export default {
     return {
       participants: [],
       participantIdCounter: 1,
-      teamName: "", // Adicione esta linha para vincular o nome da equipe
-      eventDate: "01/01/2024", // Exemplo de data (substitua com a lógica real)
-      eventTime: "10:00 AM", // Exemplo de horário (substitua com a lógica real)
-      eventLocation: "Local do evento", // Exemplo de local (substitua com a lógica real)
+      teamName: "",
+      eventDate: "01/01/2024",
+      eventTime: "10:00 AM",
+      eventLocation: "Local do evento",
       showCancelModal: false,
     };
   },
@@ -99,7 +94,6 @@ export default {
       this.showCancelModal = false;
     },
     cancelRegistration() {
-      // Lógica para cancelar a inscrição (a ser implementada)
       console.log("Inscrição cancelada!");
       this.showCancelModal = false;
     },
@@ -147,7 +141,7 @@ export default {
   background-color: white;
   padding: 20px;
   border-radius: 8px;
-  max-width: 800px; /* Ajuste a largura máxima conforme necessário */
+  max-width: 800px;
 }
 
 .header-image-container {
@@ -165,7 +159,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.95); /* Cor do filtro preto mais escuro */
+  background: rgba(0, 0, 0, 0.95);
 }
 
 .corner-text {
@@ -259,7 +253,6 @@ export default {
   margin-bottom: 10px;
 }
 
-/* Estilos para o modal de confirmação de cancelamento */
 .cancel-modal {
   position: fixed;
   top: 50%;

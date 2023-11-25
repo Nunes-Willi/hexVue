@@ -6,7 +6,6 @@
     </div>
 
     <main class="main-container">
-      <!-- Single card -->
       <div class="card card1">
         <div class="card-content">
           <h2 class="event-title">Hackathon IFC - Araquari</h2>
@@ -23,7 +22,7 @@
 </template>
 
 <style scoped>
-.all{
+.all {
   margin-top: -20px;
 }
 .imglogo {

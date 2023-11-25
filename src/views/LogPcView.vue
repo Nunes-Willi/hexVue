@@ -38,7 +38,6 @@ export default {
   },
   methods: {
     async cadastrar() {
-      // Check if all fields are filled
       if (
         !this.nome ||
         !this.idade ||
@@ -50,7 +49,6 @@ export default {
         return;
       }
 
-      // Make a POST request to your API to 00 the user
       try {
         await axios.post("/peoples/", {
           nome: this.nome,
@@ -59,8 +57,6 @@ export default {
           cpf: this.cpf,
           senha: this.senha,
         });
-        // if (response.ok) {
-        // Registration successful, navigate to the next screen
         this.$router.push("/evento");
       } catch (error) {
         alert("Erro no cadastro. Por favor, tente novamente.");
@@ -79,7 +75,6 @@ export default {
   padding-bottom: 910px;
 }
 .container {
-  /* background-color: red;  */
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -105,7 +100,6 @@ h1 {
 }
 
 .inputs {
-  /* background-color: red; */
   display: flex;
   flex-direction: column;
 }
