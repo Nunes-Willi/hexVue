@@ -20,7 +20,7 @@
           </form>
         </div>
 
-        <div class="form-section">
+        <div class="form-section2">
           <h2>Dados da Empresa</h2>
           <form @submit.prevent="submitEmpresa">
             <label for="nomeEmpresa">Nome da Empresa:</label>
@@ -31,7 +31,9 @@
 
             <label for="emailEmpresa">Email da Empresa:</label>
             <input type="email" v-model="empresa.email" required />
-            <router-link to="/eventosav" class="botao" @click="submit">Entrar</router-link>
+            <router-link to="/eventosav" class="botao" @click="submit"
+              >Cadastrar</router-link
+            >
           </form>
         </div>
       </div>
@@ -88,11 +90,17 @@ export default {
 </script>
 
 <style scoped>
+input {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid 2px white;
+  background-color: transparent;
+  color: white;
+  width: 600px;
+}
 .tudo {
   background: linear-gradient(180deg, #224948 0%, #061010 100%);
-  width: 100%;
-  height: 100%;
-  padding-bottom: 1000px;
 }
 .login-container {
   height: 100vh;
@@ -103,31 +111,36 @@ export default {
 }
 
 .img-logo {
-  height: 150px;
-  width: 350px;
-  margin-bottom: 20px; /* Espaço entre a imagem e os cards */
+  width: 450px;
+  margin-bottom: 100px; 
 }
 
 .login-form {
   display: flex;
+  flex-direction: row;
 }
 
 .form-section {
-  margin: 20px;
-  padding: 20px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  margin-right: 400px;
+  margin-bottom: 300px;
+  width: 500px;
+}
+.form-section2 {
+  width: 500px;
 }
 
 h2 {
-  color: #224948;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 30px;
 }
 
 label {
   display: block;
   margin-bottom: 8px;
-  color: #333;
+  color: #ffffff;
 }
 
 input {
@@ -144,5 +157,9 @@ input {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  height: 50px;
+  width: 100px;
+  font-size: 25px;
+  font-weight: 500;
 }
 </style>
