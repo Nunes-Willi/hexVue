@@ -55,7 +55,7 @@ const router = createRouter({
       component: InscricaoAvView,
     },
     {
-      path: "/equepesreg",
+      path: "/equipesreg",
       name: "equipesreg",
       component: EquipesRegView,
     },
