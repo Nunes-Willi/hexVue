@@ -119,19 +119,17 @@ input {
 
 .login-form {
   display: flex;
-  /* flex-direction: row; */
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  
 }
-/* 
+
 .form-section {
   display: flex;
   flex-direction: column;
-  margin-right: 400px;
-  margin-bottom: 300px;
   width: 500px;
-} */
-/* .form-section2 {
-  width: 500px;
-} */
+}
 
 h2 {
   color: #ffffff;
@@ -152,7 +150,7 @@ input {
   box-sizing: border-box;
 }
 
-/* .botao {
+.botao {
   background-color: #224948;
   color: white;
   padding: 10px 20px;
@@ -163,7 +161,9 @@ input {
   width: 100px;
   font-size: 25px;
   font-weight: 500;
-} */
+  justify-content: center;
+  text-align: center;
+}
 
 .form-container {
   display: flex;
