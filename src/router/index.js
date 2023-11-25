@@ -6,6 +6,8 @@ import NotasView from "../views/NotasView.vue";
 import InscricaoPView from "../views/InscricaoPView.vue";
 import LogPcView from "../views/LogPcView.vue";
 import EventosAvView from "../views/EventosAvView.vue";
+import InscricaoAvView from "../views/InscricaoAvView.vue"
+import EquipesRegView from "../views/EquipesRegView.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,6 +46,16 @@ const router = createRouter({
       path: "/eventosav",
       name: "enventosav",
       component: EventosAvView,
+    },
+    {
+      path: "/inscricaoav",
+      name: "inscricaoav",
+      component: InscricaoAvView,
+    },
+    {
+      path: "/equepesreg",
+      name: "equipesreg",
+      component: EquipesRegView,
     },
   ],
 });

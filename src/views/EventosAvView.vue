@@ -23,7 +23,7 @@ export default {
         <p class="participant-center">Central do Avaliador</p>
       </div>
       <div class="header-buttons">
-        <button class="header-button">Minhas Inscrições</button>
+        <router-link to="/inscricaoav" class="header-button"> Minhas Inscrições </router-link>
         <button class="header-button">Conta</button>
       </div>
     </div>
