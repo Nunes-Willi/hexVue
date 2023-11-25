@@ -26,17 +26,20 @@
               :key="index"
             >
               <div class="inf">
-              <div class="part">
-                <h3>Participante {{ index + 1 }}</h3>
-              </div>
+                <div class="part">
+                  <h3>Participante {{ index + 1 }}</h3>
+                </div>
                 <p><strong>Nome:</strong> {{ participant.nome }}</p>
                 <p><strong>Idade:</strong> {{ participant.idade }}</p>
-              <p><strong>E-mail:</strong> {{ participant.email }}</p>
+                <p><strong>E-mail:</strong> {{ participant.email }}</p>
               </div>
               <div class="checkbox">
-              <input type="checkbox" v-model="participant.selected" class="check"/>
+                <input
+                  type="checkbox"
+                  v-model="participant.selected"
+                  class="check"
+                />
               </div>
-
             </div>
 
             <button @click="buscarParticipantes" class="add-participant-button">
@@ -120,22 +123,21 @@ export default {
 </script>
 
 <style scoped>
-p{
+p {
   margin-bottom: -10px;
 }
-input:cheked{
-background-color: #224849;
+input:cheked {
+  background-color: #224849;
 }
-.check{
+.check {
   height: 20px;
   width: 20px;
   margin: 10px;
 }
-.inf{
+.inf {
   display: flex;
   flex-direction: column;
   margin-left: 10px;
-
 }
 .part {
   display: flex;
@@ -153,7 +155,6 @@ h2 {
   justify-content: center;
   align-items: center;
   display: flex;
-  
 }
 input {
   border-top: none;

@@ -28,7 +28,9 @@
           </div>
         </div>
         <!-- Move the button outside of the form-section -->
-        <router-link to="/eventosav" class="botao" @click="submitAvaliador">Cadastrar</router-link>
+        <router-link to="/eventosav" class="botao" @click="submitAvaliador"
+          >Cadastrar</router-link
+        >
       </div>
     </div>
   </div>
@@ -44,7 +46,7 @@ export default {
         idade: "",
         email: "",
         cpf: "",
-        empresa:"",
+        empresa: "",
         senha: "",
       },
       // empresa: {
@@ -119,10 +121,9 @@ input {
 
 .login-form {
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  
 }
 
 .form-section {

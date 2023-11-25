@@ -2,7 +2,11 @@
   <div>
     <div class="header-image-container">
       <div class="background-image-overlay"></div>
-      <img src="@/imagens/eifc.png" alt="Background Image" class="background-image" />
+      <img
+        src="@/imagens/eifc.png"
+        alt="Background Image"
+        class="background-image"
+      />
       <h2 class="hackathon-title">Hackathon IFC - Campus Araquari</h2>
     </div>
 
@@ -14,7 +18,10 @@
       <p>Data: {{ eventDate }}</p>
       <p>Horário: {{ eventTime }}</p>
       <p>Local: {{ eventLocation }}</p>
-      <button @click.prevent="showCancelConfirmation" class="cancel-registration-button">
+      <button
+        @click.prevent="showCancelConfirmation"
+        class="cancel-registration-button"
+      >
         Cancelar Inscrição
       </button>
     </form>
@@ -22,10 +29,17 @@
     <!-- Lista de participantes -->
     <div v-if="participants.length > 0" class="participants-list">
       <h2>Participantes</h2>
-      <div v-for="participant in participants" :key="participant.id" class="participant-card">
+      <div
+        v-for="participant in participants"
+        :key="participant.id"
+        class="participant-card"
+      >
         <p><strong>Nome:</strong> {{ getParticipantName(participant.id) }}</p>
         <p><strong>E-mail:</strong> {{ participant.email }}</p>
-        <button @click="removeParticipant(participant.id)" class="remove-participant-button">
+        <button
+          @click="removeParticipant(participant.id)"
+          class="remove-participant-button"
+        >
           Excluir
         </button>
       </div>
@@ -61,18 +75,22 @@ export default {
   methods: {
     async fetchParticipants() {
       try {
-        const response = await axios.get("https://hexback-dev-eeja.2.us-1.fl0.io/api/peoples/");
+        const response = await axios.get(
+          "https://hexback-dev-eeja.2.us-1.fl0.io/api/peoples/"
+        );
         this.participants = response.data.results;
       } catch (error) {
         console.error("Erro ao buscar participantes:", error);
       }
     },
     getParticipantName(participantId) {
-      const participant = this.participants.find(p => p.id === participantId);
+      const participant = this.participants.find((p) => p.id === participantId);
       return participant ? participant.nome : "Nome não encontrado";
     },
     removeParticipant(id) {
-      this.participants = this.participants.filter(participant => participant.id !== id);
+      this.participants = this.participants.filter(
+        (participant) => participant.id !== id
+      );
     },
     showCancelConfirmation() {
       this.showCancelModal = true;
@@ -89,7 +107,6 @@ export default {
 };
 </script>
 <style scoped>
-
 .teams-list {
   background-color: white;
   margin: 20px;

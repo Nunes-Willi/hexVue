@@ -13,14 +13,18 @@
         <button @click="cadastrar" class="register-button">Cadastrar</button>
       </div>
       <div class="image">
-        <img src="../imagens/Group 12.png" alt="hex" style="height: 550px; width: 450px" />
+        <img
+          src="../imagens/Group 12.png"
+          alt="hex"
+          style="height: 550px; width: 450px"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   data() {
@@ -35,7 +39,13 @@ export default {
   methods: {
     async cadastrar() {
       // Check if all fields are filled
-      if (!this.nome || !this.idade || !this.email || !this.senha || !this.cpf) {
+      if (
+        !this.nome ||
+        !this.idade ||
+        !this.email ||
+        !this.senha ||
+        !this.cpf
+      ) {
         alert("Por favor, preencha todos os campos.");
         return;
       }
