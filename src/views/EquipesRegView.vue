@@ -9,9 +9,9 @@
     <div class="main">
       <div class="times">
         <ul style="list-style: none">
-          <router-link to="/notas"
-            ><li><div class="inter">Red Dragons</div></li></router-link
-          >
+          <li>
+            <router-link to="/notas" class="inter">Red Dragons</router-link>
+          </li>
           <li><div class="inter">Wallhala</div></li>
           <li><div class="inter">AraquaIFC</div></li>
           <li><div class="inter">VSCoders</div></li>
@@ -48,6 +48,8 @@ li {
   margin-left: 10px;
   font-weight: 600;
   font-size: 23px;
+  color: #224948;
+  border: none;
 }
 
 .logo {
