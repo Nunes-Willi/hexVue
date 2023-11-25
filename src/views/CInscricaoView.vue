@@ -2,82 +2,30 @@
   <div>
     <div class="header-image-container">
       <div class="background-image-overlay"></div>
-      <img
-        src="@/imagens/eifc.png"
-        alt="Background Image"
-        class="background-image"
-      />
+      <img src="@/imagens/eifc.png" alt="Background Image" class="background-image" />
       <h2 class="hackathon-title">Hackathon IFC - Campus Araquari</h2>
     </div>
 
     <!-- Div com fundo branco envolvendo os formulários -->
-    <div class="forms-container">
-      <!-- Formulário para adicionar participantes -->
-      <form class="participant-form">
-        <h2>Adicionar Participante</h2>
-        <div class="form-row">
-          <label for="teamName">Nome da Equipe:</label>
-          <input v-model="teamName" type="text" id="teamName" name="teamName" />
-        </div>
-        <div
-          v-for="participant in participants"
-          :key="participant.id"
-          class="participant-card"
-        >
-          <h3>Participante {{ participant.id }}</h3>
-          <div class="form-row">
-            <label :for="'participantName_' + participant.id">Nome:</label>
-            <input
-              v-model="participant.name"
-              :type="'text'"
-              :id="'participantName_' + participant.id"
-              :name="'participantName_' + participant.id"
-            />
-          </div>
-          <div class="form-row">
-            <label :for="'participantEmail_' + participant.id">E-mail:</label>
-            <input
-              v-model="participant.email"
-              :type="'text'"
-              :id="'participantEmail_' + participant.id"
-              :name="'participantEmail_' + participant.id"
-            />
-          </div>
-        </div>
-        <button @click.prevent="addParticipant" class="add-participant-button">
-          Adicionar Participante
-        </button>
-      </form>
 
-      <!-- Formulário de informações -->
-      <form class="info-form">
-        <h2>Informações</h2>
-        <p>Data: {{ eventDate }}</p>
-        <p>Horário: {{ eventTime }}</p>
-        <p>Local: {{ eventLocation }}</p>
-        <button
-          @click.prevent="showCancelConfirmation"
-          class="cancel-registration-button"
-        >
-          Cancelar Inscrição
-        </button>
-      </form>
-    </div>
+    <!-- Formulário de informações -->
+    <form class="info-form">
+      <h2>Informações</h2>
+      <p>Data: {{ eventDate }}</p>
+      <p>Horário: {{ eventTime }}</p>
+      <p>Local: {{ eventLocation }}</p>
+      <button @click.prevent="showCancelConfirmation" class="cancel-registration-button">
+        Cancelar Inscrição
+      </button>
+    </form>
 
     <!-- Lista de participantes -->
     <div v-if="participants.length > 0" class="participants-list">
       <h2>Participantes</h2>
-      <div
-        v-for="participant in participants"
-        :key="participant.id"
-        class="participant-card"
-      >
-        <p><strong>Nome:</strong> {{ participant.name }}</p>
+      <div v-for="participant in participants" :key="participant.id" class="participant-card">
+        <p><strong>Nome:</strong> {{ getParticipantName(participant.id) }}</p>
         <p><strong>E-mail:</strong> {{ participant.email }}</p>
-        <button
-          @click="removeParticipant(participant.id)"
-          class="remove-participant-button"
-        >
+        <button @click="removeParticipant(participant.id)" class="remove-participant-button">
           Excluir
         </button>
       </div>
@@ -93,24 +41,13 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
-      participants: [
-        {
-          teamName: "Equipe A",
-          id: 1,
-          name: "Participante 1",
-          email: "email1@example.com",
-        },
-        {
-          teamName: "Equipe A",
-          id: 2,
-          name: "Participante 2",
-          email: "email2@example.com",
-        },
-      ],
-      participantIdCounter: 3,
+      participants: [],
+      participantIdCounter: 1,
       teamName: "", // Adicione esta linha para vincular o nome da equipe
       eventDate: "01/01/2024", // Exemplo de data (substitua com a lógica real)
       eventTime: "10:00 AM", // Exemplo de horário (substitua com a lógica real)
@@ -118,20 +55,24 @@ export default {
       showCancelModal: false,
     };
   },
+  mounted() {
+    this.fetchParticipants();
+  },
   methods: {
-    addParticipant() {
-      this.participants.push({
-        teamName: this.teamName,
-        id: this.participantIdCounter++,
-        name: "",
-        email: "",
-      });
-      this.teamName = ""; // Limpa o campo após adicionar
+    async fetchParticipants() {
+      try {
+        const response = await axios.get("https://hexback-dev-eeja.2.us-1.fl0.io/api/peoples/");
+        this.participants = response.data.results;
+      } catch (error) {
+        console.error("Erro ao buscar participantes:", error);
+      }
+    },
+    getParticipantName(participantId) {
+      const participant = this.participants.find(p => p.id === participantId);
+      return participant ? participant.nome : "Nome não encontrado";
     },
     removeParticipant(id) {
-      this.participants = this.participants.filter(
-        (participant) => participant.id !== id
-      );
+      this.participants = this.participants.filter(participant => participant.id !== id);
     },
     showCancelConfirmation() {
       this.showCancelModal = true;
@@ -147,9 +88,36 @@ export default {
   },
 };
 </script>
-
 <style scoped>
-/* Seu estilo aqui */
+
+.teams-list {
+  background-color: white;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+}
+
+.team-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.team-card p {
+  margin: 0;
+}
+
+.team-card ul {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding-left: 20px;
+}
+
+.team-card li {
+  list-style-type: disc;
+}
 
 .forms-container {
   position: relative;

@@ -2,7 +2,11 @@
   <div>
     <div class="header-image-container">
       <div class="background-image-overlay"></div>
-      <img src="@/imagens/eifc.png" alt="Background Image" class="background-image" />
+      <img
+        src="@/imagens/eifc.png"
+        alt="Background Image"
+        class="background-image"
+      />
       <p class="corner-text data-text">Data 24 de dez</p>
       <p class="corner-text time-text">Horário 8:00</p>
       <p class="corner-text location-text">Local IFC - Campus Araquari</p>
@@ -16,13 +20,23 @@
             <label for="teamName">Nome do Time:</label>
             <input v-model="teamName" type="text" required />
 
-            <div class="form-row" v-for="(participant, index) in participants" :key="index">
-              <h3>Participante {{ index + 1 }}</h3>
-              <p><strong>Nome:</strong> {{ participant.nome }}</p>
-              <p><strong>Idade:</strong> {{ participant.idade }}</p>
+            <div
+              class="form-row"
+              v-for="(participant, index) in participants"
+              :key="index"
+            >
+              <div class="inf">
+              <div class="part">
+                <h3>Participante {{ index + 1 }}</h3>
+              </div>
+                <p><strong>Nome:</strong> {{ participant.nome }}</p>
+                <p><strong>Idade:</strong> {{ participant.idade }}</p>
               <p><strong>E-mail:</strong> {{ participant.email }}</p>
-              <input type="checkbox" v-model="participant.selected" />
-              <label for="participantSelected">Selecionar para a equipe</label>
+              </div>
+              <div class="checkbox">
+              <input type="checkbox" v-model="participant.selected" class="check"/>
+              </div>
+
             </div>
 
             <button @click="buscarParticipantes" class="add-participant-button">
@@ -52,8 +66,10 @@ export default {
   methods: {
     async buscarParticipantes() {
       try {
-        const response = await axios.get("https://hexback-dev-eeja.2.us-1.fl0.io/api/peoples/");
-        this.participants = response.data.results.map(participant => ({
+        const response = await axios.get(
+          "https://hexback-dev-eeja.2.us-1.fl0.io/api/peoples/"
+        );
+        this.participants = response.data.results.map((participant) => ({
           ...participant,
           selected: false,
         }));
@@ -62,20 +78,32 @@ export default {
       }
     },
     async formarEquipe() {
-      // Verificar se todos os campos estão preenchidos
-      if (!this.teamName || this.participants.length === 0 || !this.participants.some(p => p.selected)) {
-        alert("Por favor, preencha todos os campos e selecione pelo menos um participante para a equipe.");
+      if (
+        !this.teamName ||
+        this.participants.length === 0 ||
+        !this.participants.some((p) => p.selected)
+      ) {
+        alert(
+          "Por favor, preencha todos os campos e selecione pelo menos um participante para a equipe."
+        );
         return;
       }
 
-      const selectedParticipants = this.participants.filter(p => p.selected);
+      const selectedParticipants = this.participants.filter((p) => p.selected);
 
       try {
-        const response = await axios.post("https://hexback-dev-eeja.2.us-1.fl0.io/api/equipes/", {
-          equipe: this.teamName,
-          qtdi: selectedParticipants.length,
-          integrantes: selectedParticipants.map(p => p.id),
-        });
+        const response = await axios.post(
+          "https://hexback-dev-eeja.2.us-1.fl0.io/api/equipes/",
+          {
+            equipe: this.teamName,
+            qtdi: selectedParticipants.length,
+            integrantes: selectedParticipants.map((p) => p.id),
+          }
+        );
+
+        // Limpar o formulário após enviar a equipe
+        this.teamName = "";
+        this.participants.forEach((p) => (p.selected = false));
 
         // Handle the response as needed
         console.log("Server response:", response.data);
@@ -91,18 +119,41 @@ export default {
 };
 </script>
 
-
 <style scoped>
+p{
+  margin-bottom: -10px;
+}
+input:cheked{
+background-color: #224849;
+}
+.check{
+  height: 20px;
+  width: 20px;
+  margin: 10px;
+}
+.inf{
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
 
-h2{
+}
+.part {
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  margin-bottom: -30px;
+}
+
+h2 {
   font-weight: 600;
   color: #224849;
   font-size: 25px;
 }
-.base{
+.base {
   justify-content: center;
   align-items: center;
   display: flex;
+  
 }
 input {
   border-top: none;
@@ -172,7 +223,7 @@ input {
   background-color: white;
   margin: 20px; /* Adicione margens para espaçamento */
   padding: 20px; /* Adicione preenchimento para espaçamento interno */
-  
+
   width: 70%;
   display: flex;
   justify-content: center;
@@ -216,10 +267,14 @@ input {
 }
 
 .form-row {
+  padding-bottom: 30px;
   display: flex;
-  align-items: center;
+  flex-direction: row;
   margin-bottom: 10px;
-  justify-content: center;
+  border: solid 1px #224849;
+  width: 953px;
+  margin-top: 10px;
+  justify-content: space-between;
 }
 
 .form-row label {
