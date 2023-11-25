@@ -1,70 +1,36 @@
 <template>
   <div>
-    <!-- Título sobreposto à imagem de fundo do header -->
-
-    <!-- Imagem de fundo do header com filtro preto escuro e título "Hackathon" -->
     <div class="header-image-container">
       <div class="background-image-overlay"></div>
-      <img
-        src="@/imagens/eifc.png"
-        alt="Background Image"
-        class="background-image"
-      />
+      <img src="@/imagens/eifc.png" alt="Background Image" class="background-image" />
       <p class="corner-text data-text">Data 24 de dez</p>
       <p class="corner-text time-text">Horário 8:00</p>
       <p class="corner-text location-text">Local IFC - Campus Araquari</p>
       <h1 class="events-title-overlay">Hackathon IFC-Araquari 2023</h1>
     </div>
     <div class="base">
-      <!-- Div com fundo branco envolvendo a main -->
       <div class="main-wrapper">
-        <!-- Main com formulário -->
         <main class="main-container">
-          <!-- Título para o formulário -->
-          <h2>Inscreva Sua Equipe</h2>
-
-          <!-- Formulário de inscrição -->
-          <form class="team-form">
-            <!-- Campo Nome do Time -->
+          <h2>Formar Equipe</h2>
+          <form class="team-form" @submit.prevent="formarEquipe">
             <label for="teamName">Nome do Time:</label>
-            <input type="text" id="teamName" name="teamName" />
+            <input v-model="teamName" type="text" required />
 
-            <!-- Cards para informações do participante -->
-            <div
-              v-for="participant in participants"
-              :key="participant.id"
-              class="participant-card"
-            >
-              <h3>Participante {{ participant.id }}</h3>
-              <div class="form-row">
-                <label for="participantName">Nome:</label>
-                <input
-                  type="text"
-                  :id="'participantName_' + participant.id"
-                  :name="'participantName_' + participant.id"
-                />
-              </div>
-              <div class="form-row">
-                <label for="participantAge">Idade:</label>
-                <input
-                  type="text"
-                  :id="'participantAge_' + participant.id"
-                  :name="'participantAge_' + participant.id"
-                />
-              </div>
-              <div class="form-row">
-                <label for="participantEmail">E-mail:</label>
-                <input
-                  type="text"
-                  :id="'participantEmail_' + participant.id"
-                  :name="'participantEmail_' + participant.id"
-                />
-              </div>
+            <div class="form-row" v-for="(participant, index) in participants" :key="index">
+              <h3>Participante {{ index + 1 }}</h3>
+              <p><strong>Nome:</strong> {{ participant.nome }}</p>
+              <p><strong>Idade:</strong> {{ participant.idade }}</p>
+              <p><strong>E-mail:</strong> {{ participant.email }}</p>
+              <input type="checkbox" v-model="participant.selected" />
+              <label for="participantSelected">Selecionar para a equipe</label>
             </div>
 
-            <!-- Botão Adicionar Participante -->
-            <button @click="addParticipant" class="add-participant-button">
-              Adicionar Participante
+            <button @click="buscarParticipantes" class="add-participant-button">
+              Buscar Participantes
+            </button>
+
+            <button type="submit" class="add-participant-button">
+              Formar Equipe
             </button>
           </form>
         </main>
@@ -74,20 +40,57 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
-      participants: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }],
+      teamName: "",
+      participants: [],
     };
   },
   methods: {
-    addParticipant() {
-      const nextId = this.participants.length + 1;
-      this.participants.push({ id: nextId });
+    async buscarParticipantes() {
+      try {
+        const response = await axios.get("https://hexback-dev-eeja.2.us-1.fl0.io/api/peoples/");
+        this.participants = response.data.results.map(participant => ({
+          ...participant,
+          selected: false,
+        }));
+      } catch (error) {
+        console.error("Erro ao buscar participantes:", error);
+      }
+    },
+    async formarEquipe() {
+      // Verificar se todos os campos estão preenchidos
+      if (!this.teamName || this.participants.length === 0 || !this.participants.some(p => p.selected)) {
+        alert("Por favor, preencha todos os campos e selecione pelo menos um participante para a equipe.");
+        return;
+      }
+
+      const selectedParticipants = this.participants.filter(p => p.selected);
+
+      try {
+        const response = await axios.post("https://hexback-dev-eeja.2.us-1.fl0.io/api/equipes/", {
+          equipe: this.teamName,
+          qtdi: selectedParticipants.length,
+          integrantes: selectedParticipants.map(p => p.id),
+        });
+
+        // Handle the response as needed
+        console.log("Server response:", response.data);
+
+        // Redirecionar para a próxima tela
+        this.$router.push("/equipesreg/");
+      } catch (error) {
+        alert("Erro ao formar equipe. Por favor, tente novamente.");
+        console.error("Error:", error);
+      }
     },
   },
 };
 </script>
+
 
 <style scoped>
 
