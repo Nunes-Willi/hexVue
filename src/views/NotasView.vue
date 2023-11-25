@@ -96,7 +96,7 @@ export default {
   display: flex;
   font-size: 45px;
   font-weight: 800;
-  color: #224849;
+  color: #04AC9F;
 }
 .criterios {
   display: flex;
@@ -136,14 +136,16 @@ export default {
 }
 
 .calculator-button {
-  padding: 8px 16px;
+  padding: 5px ;
   background-color: transparent;
   color: #ffffff;
   border: 1px solid #224948;
   background-color: #224849;
-  width: 80px;
+  width: 130px;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .calculator-result {

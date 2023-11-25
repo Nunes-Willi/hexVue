@@ -1,11 +1,15 @@
 <template>
   <div class="all">
     <div>
-      <router-link to="/avaliadores" class="evaluator-button"
-        >Página para o Avaliador</router-link
-      >
-      <div class="logo-container">
-        <img src="@/imagens/Logo.png" alt="Logo" class="logo" />
+      <div class="up">
+        <div class="logo-container">
+          <img src="@/imagens/Logo.png" alt="Logo" class="logo" />
+        </div>
+        <div>
+          <router-link to="/avaliadores" class="evaluator-button"
+            >Página para o Avaliador</router-link
+          >
+        </div>
       </div>
       <header class="header">
         <img
@@ -17,7 +21,7 @@
           <div class="header-content">
             <h1>Bem-vindo ao HEX</h1>
             <p class="header-subtitle">Melhor site de Hackathons do Brasil</p>
-            <router-link to="/participantes"
+            <router-link to="/participantes" class="botao"
               >Participar de um Hackathon</router-link
             >
           </div>
@@ -86,25 +90,32 @@
         <h2 class="section-title">Imagens de outras edições</h2>
         <!-- Grupo de imagens centralizadas -->
         <div class="image-group">
-          <img src="@/imagens/imagem1.jpg" alt="Imagem 1" class="group-image" />
-          <img src="@/imagens/imagem2.jpg" alt="Imagem 2" class="group-image" />
-          <img src="@/imagens/imagem3.jpg" alt="Imagem 3" class="group-image" />
-          <img src="@/imagens/imagem4.jpg" alt="Imagem 4" class="group-image" />
-          <img src="@/imagens/imagem5.jpg" alt="Imagem 5" class="group-image" />
+          <img src="@/imagens/Group28.png" alt="Imagem 1" class="group-image" />
         </div>
       </div>
+    </div>
+    <div class="footer">
+      <div class="footer_text">©Hackathon Experience ltda.</div>
+      <div class="footer_text">CNPJ 73.986.422/0001-51</div>
+      <div class="footer_text">+55 (47) 94789-2213</div>
     </div>
   </div>
 </template>
 
 <style scoped>
-*{
-  margin: none;
-  padding: none
+.botao {
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.all{
-  background: linear-gradient(to bottom right, #1B4341 0%, #1C3132 50%) bottom right / 50% 50% no-repeat, linear-gradient(to bottom left, #1B4341 0%, #1C3132 50%) bottom left / 50% 50% no-repeat, linear-gradient(to top left, #1B4341 0%, #1C3132 50%) top left / 50% 50% no-repeat, linear-gradient(to top right, #1B4341 0%, #1C3132 50%) top right / 50% 50% no-repeat;
 
+.all {
+  background: linear-gradient(to bottom right, #1b4341 0%, #1c3132 50%) bottom
+      right / 50% 50% no-repeat,
+    linear-gradient(to bottom left, #1b4341 0%, #1c3132 50%) bottom left / 50%
+      50% no-repeat,
+    linear-gradient(to top left, #1b4341 0%, #1c3132 50%) top left / 50% 50%
+      no-repeat,
+    linear-gradient(to top right, #1b4341 0%, #1c3132 50%) top right / 50% 50%
+      no-repeat;
 }
 /* ... (estilos existentes) ... */
 
@@ -171,10 +182,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .header-subtitle {
   color: white;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 20px;
 }
 
 .cta-button {
@@ -197,7 +211,6 @@
   flex-direction: column;
   align-items: center;
   margin: 20px;
-  background-color: #1b4341; /* Cor de fundo diferente */
   padding: 20px;
 }
 
@@ -241,6 +254,7 @@
 }
 
 .nova-imagem {
+  margin-top: 20px;
   width: 1000px;
   height: 500px;
 }
@@ -257,9 +271,26 @@
 }
 
 .group-image {
-  width: 100px;
-  height: 100px;
+  width: 1500px;
+  height: 1000px;
   margin: 10px;
   object-fit: cover;
+}
+h2 {
+  font-weight: 600;
+}
+.footer {
+  background-color: #224948;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  height: 70px;
+  padding: 70px;
+  margin-top: 20px;
+}
+.footer_text {
+  margin-right: 10px;
 }
 </style>

@@ -76,6 +76,10 @@ export default {
 </template>
 
 <style scoped>
+.logo{
+  height: 80px;
+  width: 252px;
+}
 .events-title {
   font-size: 24px;
   font-weight: bold;
@@ -90,6 +94,7 @@ export default {
   align-items: center;
   padding: 10px 20px;
   background-color: #224948;
+  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25); 
 }
 
 .logo-container {
@@ -139,16 +144,12 @@ export default {
 }
 
 .search-container {
-  position: relative;
   width: 100%;
   height: 200px;
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   background-image: url("@/imagens/imgevav.png");
-  display: flex;
   flex-direction: column;
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="all">
     <div class="imglogo">
       <img src="@/imagens/Logo.png" alt="" class="img-logo" />
       <h2>Eventos Registrados</h2>
@@ -23,6 +23,9 @@
 </template>
 
 <style scoped>
+.all{
+  margin-top: -20px;
+}
 .imglogo {
   display: flex;
   flex-direction: column;
