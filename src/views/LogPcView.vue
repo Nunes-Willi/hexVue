@@ -4,35 +4,62 @@
       <div class="form">
         <h1>Cadastro do participante</h1>
         <div class="inputs">
-          <input type="text" placeholder="Nome:" />
-          <input type="number" placeholder="Idade:" />
-          <input type="email" placeholder="Email:" />
-          <input type="password" placeholder="Senha:" />
+          <input v-model="nome" type="text" placeholder="Nome:" />
+          <input v-model="idade" type="number" placeholder="Idade:" />
+          <input v-model="email" type="email" placeholder="Email:" />
+          <input v-model="cpf" type="number" placeholder="CPF" />
+          <input v-model="senha" type="password" placeholder="Senha:" />
         </div>
-        <router-link
-          to="/evento"
-          style="
-            margin: 15px;
-            border-radius: 18px;
-            padding: 15px;
-            background-color: #224948;
-            color: white;
-            border: none;
-            font-weight: bold;
-          "
-          >Cadastrar</router-link
-        >
+        <button @click="cadastrar" class="register-button">Cadastrar</button>
       </div>
       <div class="image">
-        <img
-          src="../imagens/Group 12.png"
-          alt="hex"
-          style="height: 550px; width: 450px"
-        />
+        <img src="../imagens/Group 12.png" alt="hex" style="height: 550px; width: 450px" />
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      nome: "",
+      idade: null,
+      email: "",
+      cpf: "",
+      senha: "",
+    };
+  },
+  methods: {
+    async cadastrar() {
+      // Check if all fields are filled
+      if (!this.nome || !this.idade || !this.email || !this.senha || !this.cpf) {
+        alert("Por favor, preencha todos os campos.");
+        return;
+      }
+
+      // Make a POST request to your API to 00 the user
+      try {
+        await axios.post("/peoples/", {
+          nome: this.nome,
+          idade: this.idade,
+          email: this.email,
+          cpf: this.cpf,
+          senha: this.senha,
+        });
+        // if (response.ok) {
+        // Registration successful, navigate to the next screen
+        this.$router.push("/evento");
+      } catch (error) {
+        alert("Erro no cadastro. Por favor, tente novamente.");
+        console.error("Error:", error);
+      }
+    },
+  },
+};
+</script>
 
 <style scoped>
 .all {

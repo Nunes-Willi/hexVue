@@ -3,45 +3,39 @@
     <div class="login-container">
       <img src="@/imagens/Logo.png" alt="" class="img-logo" />
       <div class="login-form">
-        <div class="form-section">
-          <h2>Dados do Avaliador</h2>
-          <form @submit.prevent="submitAvaliador">
-            <label for="nome">Nome:</label>
-            <input type="text" v-model="avaliador.nome" required />
+        <div class="form-container">
+          <div class="form-section">
+            <h2>Dados do Avaliador</h2>
+            <form @submit.prevent="submitAvaliador">
+              <label for="nome">Nome:</label>
+              <input type="text" v-model="avaliador.nome" required />
 
-            <label for="idade">Idade:</label>
-            <input type="text" v-model="avaliador.idade" required />
+              <label for="idade">Idade:</label>
+              <input type="text" v-model="avaliador.idade" required />
 
-            <label for="email">Email:</label>
-            <input type="email" v-model="avaliador.email" required />
+              <label for="email">Email:</label>
+              <input type="email" v-model="avaliador.email" required />
 
-            <label for="senha">Senha:</label>
-            <input type="password" v-model="avaliador.senha" required />
-          </form>
+              <label for="cpf">CPF:</label>
+              <input type="cpf" v-model="avaliador.cpf" required />
+
+              <label for="empresa">Empresa:</label>
+              <input type="empresa" v-model="avaliador.empresa" required />
+
+              <label for="senha">Senha:</label>
+              <input type="password" v-model="avaliador.senha" required />
+            </form>
+          </div>
         </div>
-
-        <div class="form-section2">
-          <h2>Dados da Empresa</h2>
-          <form @submit.prevent="submitEmpresa">
-            <label for="nomeEmpresa">Nome da Empresa:</label>
-            <input type="text" v-model="empresa.nome" required />
-
-            <label for="cnpj">CNPJ:</label>
-            <input type="text" v-model="empresa.cnpj" required />
-
-            <label for="emailEmpresa">Email da Empresa:</label>
-            <input type="email" v-model="empresa.email" required />
-            <router-link to="/eventosav" class="botao" @click="submit"
-              >Cadastrar</router-link
-            >
-          </form>
-        </div>
+        <!-- Move the button outside of the form-section -->
+        <router-link to="/eventosav" class="botao" @click="submitAvaliador">Cadastrar</router-link>
       </div>
     </div>
   </div>
 </template>
-
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
@@ -49,41 +43,49 @@ export default {
         nome: "",
         idade: "",
         email: "",
+        cpf: "",
+        empresa:"",
         senha: "",
       },
-      empresa: {
-        nome: "",
-        cnpj: "",
-        email: "",
-      },
+      // empresa: {
+      //   nome: "",
+      //   cnpj: "",
+      //   email: "",
+      // },
     };
   },
   methods: {
-    submitAvaliador() {
-      console.log("Dados do Avaliador:", this.avaliador);
-    },
-    submitEmpresa() {
-      console.log("Dados da Empresa:", this.empresa);
-    },
-    submit() {
-      if (this.isAvaliadorValido && this.isEmpresaValida) {
-        console.log("Ambos os formulários estão preenchidos.");
-      } else {
-        console.log("Preencha ambos os formulários.");
+    async submitAvaliador() {
+      // Check if all fields are filled
+      if (
+        !this.nome ||
+        !this.idade ||
+        !this.email ||
+        !this.senha ||
+        !this.cpf ||
+        !this.empresa
+      ) {
+        alert("Por favor, preencha todos os campos.");
+        return;
       }
-    },
-  },
-  computed: {
-    isAvaliadorValido() {
-      return (
-        this.avaliador.nome &&
-        this.avaliador.idade &&
-        this.avaliador.email &&
-        this.avaliador.senha
-      );
-    },
-    isEmpresaValida() {
-      return this.empresa.nome && this.empresa.cnpj && this.empresa.email;
+
+      // Make a POST request to your API to 00 the user
+      try {
+        await axios.post("/avaliadores/", {
+          nome: this.nome,
+          idade: this.idade,
+          email: this.email,
+          cpf: this.cpf,
+          empresa: this.empresa,
+          senha: this.senha,
+        });
+        // if (response.ok) {
+        // Registration successful, navigate to the next screen
+        this.$router.push("/eventoav");
+      } catch (error) {
+        alert("Erro no cadastro. Por favor, tente novamente.");
+        console.error("Error:", error);
+      }
     },
   },
 };
@@ -112,24 +114,24 @@ input {
 
 .img-logo {
   width: 450px;
-  margin-bottom: 100px; 
+  margin-bottom: 100px;
 }
 
 .login-form {
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
 }
-
+/* 
 .form-section {
   display: flex;
   flex-direction: column;
   margin-right: 400px;
   margin-bottom: 300px;
   width: 500px;
-}
-.form-section2 {
+} */
+/* .form-section2 {
   width: 500px;
-}
+} */
 
 h2 {
   color: #ffffff;
@@ -150,7 +152,7 @@ input {
   box-sizing: border-box;
 }
 
-.botao {
+/* .botao {
   background-color: #224948;
   color: white;
   padding: 10px 20px;
@@ -160,6 +162,32 @@ input {
   height: 50px;
   width: 100px;
   font-size: 25px;
+  font-weight: 500;
+} */
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+
+.botao {
+  margin-top: 20px; /* Add margin to separate the button from the form */
+  background-color: #224948;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 50px;
+  width: 150px; /* Adjust width as needed */
+  font-size: 20px; /* Adjust font size as needed */
   font-weight: 500;
 }
 </style>
