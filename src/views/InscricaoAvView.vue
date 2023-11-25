@@ -29,6 +29,7 @@
   align-items: center;
   margin-top: 20px;
   color: white;
+  background: linear-gradient(180deg, #000 0%, #224948 100%);
 }
 
 .main-container {
