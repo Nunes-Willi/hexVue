@@ -1,7 +1,6 @@
 <template>
   <div>
     <!-- Título sobreposto à imagem de fundo do header -->
-    <h1 class="events-title-overlay">Hackathon IFC-Araquari 2023</h1>
 
     <!-- Imagem de fundo do header com filtro preto escuro e título "Hackathon" -->
     <div class="header-image-container">
@@ -11,48 +10,65 @@
         alt="Background Image"
         class="background-image"
       />
-      <p class="corner-text data-text">Data</p>
-      <p class="corner-text time-text">Horário</p>
-      <p class="corner-text location-text">Local</p>
-      <h2 class="hackathon-title">Hackathon</h2>
+      <p class="corner-text data-text">Data 24 de dez</p>
+      <p class="corner-text time-text">Horário 8:00</p>
+      <p class="corner-text location-text">Local IFC - Campus Araquari</p>
+      <h1 class="events-title-overlay">Hackathon IFC-Araquari 2023</h1>
     </div>
+    <div class="base">
+      <!-- Div com fundo branco envolvendo a main -->
+      <div class="main-wrapper">
+        <!-- Main com formulário -->
+        <main class="main-container">
+          <!-- Título para o formulário -->
+          <h2>Inscreva Sua Equipe</h2>
 
-    <!-- Div com fundo branco envolvendo a main -->
-    <div class="main-wrapper">
-      <!-- Main com formulário -->
-      <main class="main-container">
-        <!-- Título para o formulário -->
-        <h2>Inscreva Sua Equipe</h2>
+          <!-- Formulário de inscrição -->
+          <form class="team-form">
+            <!-- Campo Nome do Time -->
+            <label for="teamName">Nome do Time:</label>
+            <input type="text" id="teamName" name="teamName" />
 
-        <!-- Formulário de inscrição -->
-        <form class="team-form">
-          <!-- Campo Nome do Time -->
-          <label for="teamName">Nome do Time:</label>
-          <input type="text" id="teamName" name="teamName" />
-
-          <!-- Cards para informações do participante -->
-          <div v-for="participant in participants" :key="participant.id" class="participant-card">
-            <h3>Participante {{ participant.id }}</h3>
-            <div class="form-row">
-              <label for="participantName">Nome:</label>
-              <input type="text" :id="'participantName_' + participant.id" :name="'participantName_' + participant.id" />
+            <!-- Cards para informações do participante -->
+            <div
+              v-for="participant in participants"
+              :key="participant.id"
+              class="participant-card"
+            >
+              <h3>Participante {{ participant.id }}</h3>
+              <div class="form-row">
+                <label for="participantName">Nome:</label>
+                <input
+                  type="text"
+                  :id="'participantName_' + participant.id"
+                  :name="'participantName_' + participant.id"
+                />
+              </div>
+              <div class="form-row">
+                <label for="participantAge">Idade:</label>
+                <input
+                  type="text"
+                  :id="'participantAge_' + participant.id"
+                  :name="'participantAge_' + participant.id"
+                />
+              </div>
+              <div class="form-row">
+                <label for="participantEmail">E-mail:</label>
+                <input
+                  type="text"
+                  :id="'participantEmail_' + participant.id"
+                  :name="'participantEmail_' + participant.id"
+                />
+              </div>
             </div>
-            <div class="form-row">
-              <label for="participantAge">Idade:</label>
-              <input type="text" :id="'participantAge_' + participant.id" :name="'participantAge_' + participant.id" />
-            </div>
-            <div class="form-row">
-              <label for="participantEmail">E-mail:</label>
-              <input type="text" :id="'participantEmail_' + participant.id" :name="'participantEmail_' + participant.id" />
-            </div>
-          </div>
 
-
-
-          <!-- Botão Adicionar Participante -->
-          <button @click="addParticipant" class="add-participant-button">Adicionar Participante</button>
-        </form>
-      </main>
+            <!-- Botão Adicionar Participante -->
+            <button @click="addParticipant" class="add-participant-button">
+              Adicionar Participante
+            </button>
+          </form>
+        </main>
+      </div>
     </div>
   </div>
 </template>
@@ -61,20 +77,37 @@
 export default {
   data() {
     return {
-      participants: [{ id: 1 }, { id: 2 },{id: 3}, {id: 4}]
+      participants: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }],
     };
   },
   methods: {
     addParticipant() {
       const nextId = this.participants.length + 1;
       this.participants.push({ id: nextId });
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
 
+h2{
+  font-weight: 600;
+  color: #224849;
+  font-size: 25px;
+}
+.base{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+input {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: #224849 solid 2px;
+  width: 400px;
+}
 .events-title-overlay {
   font-size: 24px;
   font-weight: bold;
@@ -93,7 +126,7 @@ export default {
 
 .background-image {
   width: 100%;
-  height: auto; 
+  height: auto;
 }
 
 .background-image-overlay {
@@ -136,7 +169,11 @@ export default {
   background-color: white;
   margin: 20px; /* Adicione margens para espaçamento */
   padding: 20px; /* Adicione preenchimento para espaçamento interno */
-  border-radius: 8px;
+  
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .main-container {
@@ -163,7 +200,7 @@ export default {
   padding: 10px;
   margin-top: 20px;
   justify-content: center;
-  
+  width: 500px;
 }
 
 .participant-card h3 {
@@ -195,7 +232,5 @@ export default {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  
 }
-
 </style>

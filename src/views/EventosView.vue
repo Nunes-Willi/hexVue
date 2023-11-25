@@ -6,7 +6,7 @@
         <p class="participant-center">Central do Participante</p>
       </div>
       <div class="header-buttons">
-        <button class="header-button">Minhas Inscrições</button>
+        <router-link to="/inscricaop" class="header-button">Minhas Inscrições</router-link>
         <button class="header-button">Conta</button>
       </div>
     </div>
@@ -25,7 +25,7 @@
           <p>Data: 24 de Nov</p>
           <p>Horário: 7:30</p>
           <p>Local: IFC Campus Araquari</p>
-          <button class="subscribe-button">Inscreva-se</button>
+          <button @click="confirmInscricao" class="subscribe-button">Inscreva-se</button>
         </div>
       </div>
 
@@ -36,7 +36,7 @@
           <p>Data</p>
           <p>Horário: 7:30</p>
           <p>Local: IFC Campus Araquari</p>
-          <button class="subscribe-button">Inscreva-se</button>
+          <button @click="confirmInscricao" class="subscribe-button">Inscreva-se</button>
         </div>
       </div>
 
@@ -47,12 +47,28 @@
           <p>Descrição do card 3.</p>
           <p>Horário: 7:30</p>
           <p>Local: IFC Campus Araquari</p>
-          <button class="subscribe-button">Inscreva-se</button>
+          <button @click="confirmInscricao" class="subscribe-button">Inscreva-se</button>
         </div>
       </div>
     </main>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    confirmInscricao() {
+      const confirmacao = window.confirm("Deseja realizar a inscrição?");
+      if (confirmacao) {
+        console.log("Usuário confirmou a inscrição");
+        // Adicione aqui a lógica para realizar a inscrição
+      } else {
+        console.log("Usuário cancelou a inscrição");
+      }
+    },
+  },
+};
+</script>
 
 <style scoped>
 /* ... (estilos existentes) ... */
